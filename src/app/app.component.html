@@ -1,0 +1,6 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<p-blockUI [blocked]="action.data.blocked">
+  <p-progressSpinner animationDuration=".5s"></p-progressSpinner>
+</p-blockUI>
+<router-outlet></router-outlet>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-94906": {
+      "hosting": {
+        "preshSite": [
+          "presh"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-94906"
+  }
+}

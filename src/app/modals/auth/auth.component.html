@@ -1,0 +1,92 @@
+<div *ngIf="data.type=='signup'">
+  <div class="animate__animated">
+    <div class="p-g">
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Your name</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input type="text" pInputText placeholder="e.g John..." [(ngModel)]="data.user.name" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Email Address:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-at"></i>
+          <input pInputText type="mail" placeholder="e.g yourmail.com" [(ngModel)]="data.user.mail" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+
+      <div class="m-g-bl">
+        <p-dropdown [options]="data?.country" [(ngModel)]="data.cout" optionLabel="name" [filter]="true" filterBy="name"
+          [showClear]="true" placeholder="Select a Country" [style]="{width:'100%'}" (onChange)="country()">
+        </p-dropdown>
+      </div>
+
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Username:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input type="text" pInputText placeholder="e.g Others..." [(ngModel)]="data.user.username" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Set password:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input pInputText type="password" placeholder="......" [(ngModel)]="data.user.pass1" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Confirm password:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input pInputText type="password" placeholder="......" [(ngModel)]="data.user.password" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+    </div>
+    <!-- <ion-button expand="full" size="medium" (click)="submit()">Proceed</ion-button> -->
+    <div>
+      <p-button label="Sign up" [loading]="data.loading"
+        [disabled]="!data.user.name || !data.user.mail || !data.user.country || !data.user.username || !data.user.password || !data.user.pass1"
+        (click)="proceed()"></p-button>
+    </div>
+    <p class="align-center" (click)="data.type='login'; data.user={}">Go to Sign in</p>
+  </div>
+</div>
+
+<div *ngIf="data.type=='login'">
+  <div class="animate__animated">
+    <div class="p-g">
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Email Address:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-at"></i>
+          <input pInputText type="email" placeholder="e.g yourmail.com" [(ngModel)]="data.user.email" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+      <div class="m-g-bl">
+        <h5 class="font-mont font-small font-native">Set password:</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input pInputText type="password" placeholder="......" [(ngModel)]="data.user.password" class="font-mont"
+            class="w-auto font-native" />
+        </span>
+      </div>
+
+    </div>
+    <!-- <ion-button expand="full" size="medium" (click)="submit()">Proceed</ion-button> -->
+    <div class="center-flex m-g-bl">
+      <p-button label="Sign in" [loading]="data.loading" [disabled]="!data.user.email || !data.user.password"
+        (click)="proceed()"></p-button>
+    </div>
+    <p class="align-center" (click)="data.type='signup'; data.user={}">Go to Sign up</p>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<p-sidebar [(visible)]="data.side" position="left">
+  <div>
+    <div>
+      <a class="text-black btn btn-light nav-link link text-primary " (click)="createReq('invest')">Investment :
+        {{data?.wallet?.invested || 0.00 |
+        currency: data?.details?.currency}}</a>
+    </div>
+    <hr class="text-black hr" />
+    <div>
+      <a class="text-black btn btn-light nav-link link text-primary" (click)="createReq('withdraw')">Withdraw funds</a>
+    </div>
+
+  </div>
+</p-sidebar>
+
+<body>
+  <iframe
+    [src]="action.sanitizeUrl('https://widget.coinlib.io/widget?type=horizontal_v2&theme=light&pref_coin_id=1505&invert_hover=')"
+    width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+    style="border:0;margin:0;padding:0;">
+  </iframe>
+  <section data-bs-version="5.1" class="menu menu1 cid-sFCw1qGFAI" once="menu" id="menu2-23">
+
+    <nav class="navbar navbar-dropdown navbar-expand-lg">
+      <div class="container">
+        <div class="navbar-brand">
+
+          <span class="navbar-caption-wrap"><a class="text-black navbar-caption display-7"
+              href="#">{{data.user.username}}</a></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+          data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+            <li class="nav-item"><a class="text-black nav-link link text-primary display-4"
+                (click)="action.navigate('home')">Home</a></li>
+            <a class="text-white btn btn-dark nav-link link text-primary " (click)="data.side=true">Account
+              menu</a>
+            <li class="nav-item"><a class="text-black nav-link link text-primary display-4" href="#">Account
+                settings</a></li>
+            <li class="nav-item"><a class="text-black nav-link link text-primary display-4"
+                (click)="logout()">logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <section data-bs-version="5.1" class="header14 cid-sFzxmVl7J6 mbr-fullscreen" id="header14-1f">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.9; background-color: rgb(0, 0, 0);"></div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-md">
+          <div class="text-wrapper">
+            <h1 class="mb-3 text-white mbr-section-title mbr-fonts-style display-1"><strong>Account status: <span
+                  [ngClass]="{'red':data?.details?.status==0,'green':data?.details?.status==1}">{{data?.details?.status==1?"Verified":"Not
+                  verified"}}</span></strong></h1>
+            <p class="text-white display-7">Use the account menu to interact with your account</p>
+          </div>
+        </div>
+      </div>
+      <hr class="text-white hr" />
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-md">
+          <div class="text-wrapper">
+            <div class="mb-3 text-white mbr-section-title mbr-fonts-style display-4"><strong>Total Earnings: <span
+                  [ngClass]="{'red':data?.details?.status==0,'green':data?.details?.status==1}">{{data?.wallet?.earnings
+                  || 0.00 | currency: data?.details?.currency}}</span></strong></div>
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md">
+          <div class="text-wrapper">
+            <div class="mb-3 text-white mbr-section-title mbr-fonts-style display-4"><strong>Total Bonus: <span
+                  [ngClass]="{'red':data?.details?.status==0,'green':data?.details?.status==1}">{{data?.wallet?.bonus ||
+                  0.00 | currency: data?.details?.currency}}</span></strong></div>
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md">
+          <div class="text-wrapper">
+            <div class="mb-3 text-white mbr-section-title mbr-fonts-style display-4"><strong>Combo X2: <span
+                  [ngClass]="{'red':data?.details?.status==0,'green':data?.details?.status==1}">{{data?.wallet?.combo ||
+                  0.00 | currency: data?.details?.currency}}</span></strong></div>
+
+          </div>
+        </div>
+      </div>
+      <iframe
+        [src]="action.sanitizeUrl('https://widget.coinlib.io/widget?type=chart&theme=dark&coin_id=859&pref_coin_id=1505')"
+        width="100%" height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+        style="border:0;margin:0;padding:0;line-height:14px;"></iframe>
+    </div>
+  </section>
+
+  <div
+    style="height:433px; background-color: #1D2330; overflow:hidden; box-sizing: border-box; border: 1px solid #282E3B; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #262B38; padding: 0px; margin: 0px; width: 100%;">
+    <div style="height:413px; padding:0px; margin:0px; width: 100%;"><iframe
+        [src]="action.sanitizeUrl('https://widget.coinlib.io/widget?type=full_v2&theme=dark&cnt=6&pref_coin_id=1505&graph=yes')"
+        width="100%" height="409px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+        style="border:0;margin:0;padding:0;"></iframe></div>
+    <div
+      style="color: #626B7F; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;">
+      <a target="_blank" style="font-weight: 500; color: #626B7F; text-decoration:none; font-size:11px">Cryptocurrency
+        Prices</a>&nbsp;by Coinlib
+    </div>
+  </div>
+  <iframe
+    [src]="action.sanitizeUrl('https://widget.coinlib.io/widget?type=horizontal_v2&theme=light&pref_coin_id=1505&invert_hover=')"
+    width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+    style="border:0;margin:0;padding:0;">
+  </iframe>
+</body>

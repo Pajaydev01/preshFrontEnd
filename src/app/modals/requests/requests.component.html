@@ -1,0 +1,201 @@
+<div *ngIf="action.getItem()=='invest'">
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Amount</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="number" pInputText placeholder="amount" [(ngModel)]="data.user.total" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Firstname</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.fname" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Lastname</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.lname" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Company name (optional)</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="Company name" [(ngModel)]="data.user.cname" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Town/city</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="Town" [(ngModel)]="data.user.town" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Street address</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="street" [(ngModel)]="data.user.address" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Post code</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="post" [(ngModel)]="data.user.postCode" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Phone no</h5>
+    <span class="p-input-icon-left">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="phone" [(ngModel)]="data.user.phone" class="font-mont"
+        class="w-auto font-native" />
+    </span>
+  </div>
+
+  <div class="m-g-bl">
+    <h5 class="font-mont font-small font-native">Note (optional)</h5>
+    <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="data.user.note" placeholder="Note"></textarea>
+  </div>
+
+  <div class="center-flex m-g-bl">
+    <p-button label="Proceed" [loading]="data.loading" [style]="{'background':'black',color:'white'}"
+      [disabled]="checker('invest')" (click)="proceed('invest')"></p-button>
+  </div>
+</div>
+<div *ngIf="action.getItem()=='withdraw'">
+  <div *ngIf="data.current=='amount'">
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Amount</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="number" pInputText placeholder="amount" [(ngModel)]="data.user.total" class="font-mont"
+          class="w-auto font-native" [disabled]="data.loading" />
+      </span>
+    </div>
+
+    <p-button label="Proceed" [loading]="data.loading" [style]="{'background':'black',color:'white'}"
+      [disabled]="!data.user.total" (click)="checkAccount()"></p-button>
+  </div>
+
+  <div *ngIf="data.current=='saveAccount'">
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Account name</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="amount" [(ngModel)]="data.user.name" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Account number</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="no" [(ngModel)]="data.user.accountNumber" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">routing number</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.routingNumber" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Bank</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.bank" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Iban</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.iban" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Swift code</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.swift" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Btc</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.btc" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="center-flex m-g-bl">
+      <p-button label="Proceed" [loading]="data.loading" [style]="{'background':'black',color:'white'}"
+        [disabled]="checker('bank')" (click)="saveBank()"></p-button>
+    </div>
+  </div>
+
+  <div *ngIf="data.current=='withdraw'">
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Amount</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.total" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Narration</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText placeholder="name" [(ngModel)]="data.user.details" class="font-mont"
+          class="w-auto font-native" />
+      </span>
+    </div>
+
+    <div class="m-g-bl">
+      <h5 class="font-mont font-small font-native">Type</h5>
+      <p-dropdown [options]="[{name:'earnings'},{name:'bonus'}]" [(ngModel)]="data.user.type" optionLabel="name"
+        placeholder="Select a wallet" [style]="{width:'100%'}" optionValue="name">
+      </p-dropdown>
+    </div>
+
+    <div class="center-flex m-g-bl">
+      <p-button label="Proceed" [loading]="data.loading" [style]="{'background':'black',color:'white'}"
+        [disabled]="checker('withdraw')" (click)="withdraw()"></p-button>
+    </div>
+
+  </div>
+</div>
